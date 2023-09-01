@@ -1,0 +1,59 @@
+---
+title: "hw0"
+author: "Yu Yan"
+format: html
+editor: visual
+---
+
+## Equation
+
+$f(x) = ax^2+bx+c=0$
+
+```{r}
+#| echo: FALSE
+a <- 1
+b <- -1
+c <- -2
+cat("a = ", a, ", b = ", b, ", c = ", c)
+```
+
+## Solve the Equation
+
+```{r}
+#| echo: FALSE
+
+#caculate solutions
+x1 <- (-b + sqrt(b^2 - 4*a*c) ) / ( 2*a )
+x2 <- (-b - sqrt(b^2 - 4*a*c) ) / ( 2*a )
+
+#print solutions
+if (is.na(x1) == FALSE && is.na(x2)==FALSE){
+  if (x1 == x2){
+    cat("There is only one solution to this equation:", x1)
+  }else{
+   cat("There are two solutions to this equation:", x1, "and", x2)
+  }
+}else{
+  print("There is no solution to this equation.")
+}
+
+```
+
+## Plot the Equation
+
+```{r}
+#| echo: FALSE
+x <- seq(-5,5, length = 300)
+plot(x, a*x^2 + b*x + c,  type = "l")
+abline(h = 0, lty = 2)
+
+if (is.na(x1) == FALSE && is.na(x2)==FALSE){
+  if (x1 == x2){
+    cat("There is one point of intersection in the plot:", x1)
+  }else{
+   cat("There are two points of intersection in the plot:", x1, "and", x2)
+  }
+}else{
+  print("There is no intersection in the plot")
+}
+```
